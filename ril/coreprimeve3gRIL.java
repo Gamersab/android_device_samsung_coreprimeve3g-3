@@ -102,6 +102,7 @@ public class coreprimeve3gRIL extends SamsungSPRDRIL implements CommandsInterfac
             result.sendToTarget();
         }
     }
+
     @Override
     public void startLceService(int reportIntervalMs, boolean pullMode, Message response) {
          riljLog("Link Capacity Estimate (LCE) service is not supported!");
@@ -110,6 +111,25 @@ public class coreprimeve3gRIL extends SamsungSPRDRIL implements CommandsInterfac
                      CommandException.Error.REQUEST_NOT_SUPPORTED));
              response.sendToTarget();
          }       
+    }
+
+    @Override
+    public void setDataAllowed(boolean allowed, Message result) {
+        boolean oldRil = needsOldRilFeature("radiopower");
+        if (oldRil) {
+            setRadioPower(false, null);
+            riljLog("setDataAllowed: Restarting RIL");
+        }
+        if (RILJ_LOGD) riljLog("setDataAllowed: allowed:" + allowed + " msg:" + result);
+        if (allowed) {
+            invokeOemRilRequestRaw(RAW_HOOK_OEM_CMD_SWITCH_DATAPREFER, result);
+        } else {
+            if (result != null) {
+                // Fake the response since we are doing nothing to disallow mobile data
+                AsyncResult.forMessage(result, 0, null);
+                result.sendToTarget();
+            }
+        }
     }
 
     @Override
