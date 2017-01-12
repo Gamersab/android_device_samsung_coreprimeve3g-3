@@ -32,7 +32,6 @@ on init
 
 on fs
     mount_all /fstab.sc8830
-    swapon_all /fstab.sc8830
     mount pstore pstore /sys/fs/pstore
     setprop ro.crypto.fuse_sdcard true
 	symlink /system/res /res
@@ -467,6 +466,21 @@ service smd_symlink /system/bin/ext_symlink.sh -u
     user root
     disabled
     oneshot
+
+#SSWAP
+service swapon /sbin/sswap -s
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:vnswap.enabled=true
+   start vnswap
+
+on property:ro.config.zram.disksize=*
+    write /sys/block/zram0/disksize ${ro.config.zram.disksize}
+    swapon_all /fstab.sc8830
 
 #data on
 service data_on /system/bin/ext_data.sh  -u
