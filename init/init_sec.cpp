@@ -51,3 +51,4 @@ void vendor_load_properties()
     strlcpy(devicename, device, sizeof(devicename));
     ERROR("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
 }
+

@@ -20,3 +20,4 @@
 #define BTM_DEF_LOCAL_NAME   "SM-G361H"
 
 #endif
+

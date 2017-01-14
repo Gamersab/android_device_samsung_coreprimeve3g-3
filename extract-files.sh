@@ -16,3 +16,4 @@ for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
 done
 
 ./setup-makefiles.sh
+

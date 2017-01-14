@@ -31,7 +31,7 @@ ro.modem.w.runnv_size=0x60000
 
 ro.modem.wcn.enable=1
 ro.modem.wcn.dev=/dev/cpwcn
-ro.modem.wcn.tty=/deiv/stty_wcn
+ro.modem.wcn.tty=/dev/stty_wcn
 ro.modem.wcn.diag=/dev/slog_wcn
 ro.modem.wcn.assert=/dev/spipe_wcn2
 ro.modem.wcn.id=1
@@ -50,17 +50,14 @@ ro.ril.hsxpa=1
 ro.ril.gprsclass=10
 persist.radio.multisim.config=dsds
 ro.telephony.ril_class=coreprimeve3gRIL
+ro.telephony.prop_class=grandprimeve3gRIL$TelephonyPropertyProvider
 ro.telephony.ril.config=setPrefNwTypeOnUnsolConnected,simactivation,radiopower
 ro.ril.telephony.mqanelements=6
 persist.sys.sprd.modemreset=1
 persist.sys.sprd.wcnreset=1
 
-# Multitasking
-vnswap.enabled=true
-ro.config.zram.disksize=512M
-
-
 # Multi-user UI
 fw.max_users=3
 fw.show_multiuserui=1
+
 

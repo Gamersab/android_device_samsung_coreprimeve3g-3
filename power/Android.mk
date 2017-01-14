@@ -1,4 +1,4 @@
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
-# This file lists the product definition files that define
-# configurations which are actually buildable (e.g. through lunch)
-#
+LOCAL_PATH := $(call my-dir)
 
-PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/device_coreprimeve3g.mk
+ifeq ($(TARGET_POWERHAL_VARIANT),samsung)
 
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := power.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_SRC_FILES := power.c
+LOCAL_MODULE_TAGS := optional
+
+ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
+    LOCAL_CFLAGS := -DTARGET_TAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
+endif
+
+include $(BUILD_SHARED_LIBRARY)
+
+endif

@@ -2,7 +2,11 @@ Copyright 2016 - Android Open Source Project
 Copyright 2016 - The CyanogenMod Project
 ===================================
 
+<<<<<<< HEAD
 Device configuration for Samsung Galaxy Core Prime VE SPRD SM-G361H (coreprimeve3g)
+=======
+Device configuration for Samsung Galaxy Grand Prime VE SPRD SM-G531H (grandprimeve3g)
+>>>>>>> 3c806767c4bdb7d0380529fa369995ef6f91a933
 
 		instruction how to build
 
@@ -16,12 +20,17 @@ beacause it wont eat your RAM and build will be faster
 
 
 After you finshed repo sync go in your working dir/device/
+<<<<<<< HEAD
 and create folder /samsung/coreprimeve3g and copy content of coreprimeve3g
+=======
+and create folder /samsung/grandprimeve3g and copy content of grandprimeve3g
+>>>>>>> 3c806767c4bdb7d0380529fa369995ef6f91a933
 that you downloaded from here.
 
 For build recovery, run this command in terminal from your working dir 
 
 		. build/envsetup.sh
+<<<<<<< HEAD
 		lunch cm_coreprimeve3g-userdebug && make recoveryimage
 
 Your build will start and you will find your recovery.img in your working dir/out/target/product/coreprimeve3g
@@ -29,6 +38,15 @@ Your build will start and you will find your recovery.img in your working dir/ou
 To make it flashable via ODIN you have to make it recovery.tar.md5
 Navigate with terminal where you save your recovey.img .
 For example cd android/out/target/product/coreprimeve3g
+=======
+		lunch cm_grandprimeve3g-userdebug && make recoveryimage
+
+Your build will start and you will find your recovery.img in your working dir/out/target/product/grandprimeve3g
+
+To make it flashable via ODIN you have to make it recovery.tar.md5
+Navigate with terminal where you save your recovey.img .
+For example cd android/out/target/product/grandprimeve3g
+>>>>>>> 3c806767c4bdb7d0380529fa369995ef6f91a933
 where android is name of your working dir
 and run command:
 
@@ -40,7 +58,11 @@ An now you got recovery.tar.md5 ready to be flashed usin ODIN selected as PDA fi
 
 And for build rom, run this command in terminal from your working dir 
 
+<<<<<<< HEAD
 		. build/envsetup.sh && brunch coreprimeve3g
+=======
+		. build/envsetup.sh && brunch grandprimeve3g
+>>>>>>> 3c806767c4bdb7d0380529fa369995ef6f91a933
 
 Good luck and Happy building. (^_^)/
 
@@ -54,6 +76,7 @@ where 1st command is to apply patch and
 the 2nd for to revert the patches which applied earlier
 
 		patch -p1 < audio.patch
+<<<<<<< HEAD
 		patch -R -p1 <audio.patch
 
 # Patches for coreprimeve3g
@@ -64,3 +87,9 @@ the 2nd for to revert the patches which applied earlier
 * [hardware/libhardware](https://github.com/CyanogenMod/android_hardware_libhardware/compare/cm-13.0...ngoquang2708:cm-13.0.patch)
 * [system/core](https://github.com/CyanogenMod/android_system_core/compare/cm-13.0...ngoquang2708:cm-13.0.patch)
 * [system/media](https://github.com/CyanogenMod/android_system_media/compare/cm-13.0...ngoquang2708:cm-13.0.patch)
+=======
+		patch -R -p1 < audio.patch
+
+# Patches for grandprimeve3g
+		Inside "patches" folder
+>>>>>>> 3c806767c4bdb7d0380529fa369995ef6f91a933
