@@ -35,6 +35,7 @@ TARGET_UNIFIED_DEVICE := true
 
 # Config u-boot
 TARGET_NO_BOOTLOADER := true
+
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
@@ -48,12 +49,12 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/sdio_emmc/
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := coreprimeve3g-dt_defconfig
+TARGET_KERNEL_CONFIG := cyanogen_coreprimeve3g_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/coreprimeve3g
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/samsung/coreprimeve3g/dt.img
 
 # RIL
-BOARD_RIL_CLASS += ../../../device/samsung/coreprimeve3g/ril
+BOARD_RIL_CLASS := ../../../device/samsung/coreprimeve3g/ril
 COMMON_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
 # FM radio
@@ -82,7 +83,6 @@ BOARD_HAVE_SAMSUNG_WIFI := true
 
 # Graphics
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-BOARD_EGL_NEEDS_HANDLE_VALUE := true
 HWUI_COMPILE_FOR_PERF := true
 TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
@@ -93,9 +93,6 @@ USE_SPRD_HWCOMPOSER := true
 USE_SPRD_DITHER := true
 USE_OVERLAY_COMPOSER_GPU := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
-
-# Enable WEBGL in WebKit
-ENABLE_WEBGL := true
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
@@ -109,28 +106,17 @@ TARGET_SCREEN_WIDTH := 480
 
 # Codecs
 COMMON_GLOBAL_CFLAGS += -DBOARD_CANT_REALLOCATE_OMX_BUFFERS
-
-# Codecs
-COMMON_GLOBAL_CFLAGS += -DBOARD_CANT_REALLOCATE_OMX_BUFFERS
 SOC_SCX30G_V2 := true
 
 # Board specific features
 BOARD_USE_SAMSUNG_COLORFORMAT := true
 
 # healthd
-#BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
-
-# Init
-TARGET_NR_SVC_SUPP_GIDS := 36
-TARGET_PROVIDES_INIT_RC := true
-
-# PowerHAL
-TARGET_POWERHAL_VARIANT := samsung
-=======
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
 
 # Init
 TARGET_NR_SVC_SUPP_GIDS := 36
+TARGET_PROVIDES_INIT_RC := true
 
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
@@ -146,15 +132,6 @@ TARGET_INIT_VENDOR_LIB := libinit_sec
 
 # Use dmalloc() for such low memory devices like us
 MALLOC_IMPL := dlmalloc
-
-# Enable dex-preoptimization to speed up the first boot sequence
-WITH_DEXPREOPT := true
-
-# PowerHAL
-TARGET_POWERHAL_VARIANT := samsung
-
-# Use dmalloc() for such low memory devices like us
-BOARD_USES_LEGACY_MMAP := true
 
 # Enable dex-preoptimization to speed up the first boot sequence
 WITH_DEXPREOPT := true
