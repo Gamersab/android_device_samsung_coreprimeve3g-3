@@ -48,7 +48,7 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/sdio_emmc/
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := coreprimeve3g-dt_defconfig
+TARGET_KERNEL_CONFIG := coreprimeve3g_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/coreprimeve3g
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/samsung/coreprimeve3g/dt.img
 
@@ -126,7 +126,6 @@ TARGET_PROVIDES_INIT_RC := true
 
 # PowerHAL
 TARGET_POWERHAL_VARIANT := samsung
-=======
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
 
 # Init
